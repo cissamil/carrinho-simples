@@ -1,70 +1,34 @@
-# Atividade Carrinho Simples 
+# Carrinho Simples - React Native com Expo
 
-**Objetivo:** Desenvolver um aplicativo móvel em React Native para gerenciamento de itens de supermercado, aplicando os conceitos de componentização, tipagem com TypeScript, passagem de propriedades (props) e gerenciamento de estado imutável.
+Este projeto e uma aplicacao simples de lista de compras feita com React Native + Expo.
+O objetivo e praticar conceitos basicos de desenvolvimento mobile/web com componentes, estado e renderizacao de listas.
 
-**Dados Iniciais**
-Utilize o array abaixo como o estado inicial da aplicação no arquivo principal (`App.tsx`):
+## O que a aplicacao faz
 
-```javascript
-export const produtosIniciais = [
-  {
-    id: 1,
-    nome: "Café em Grãos",
-    imagem: "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=200",
-    noCarrinho: false,
-  },
-  {
-    id: 2,
-    nome: "Leite Integral",
-    imagem: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=200",
-    noCarrinho: false,
-  },
-  {
-    id: 3,
-    nome: "Pão de Forma",
-    imagem: "https://images.unsplash.com/photo-1598373182133-52452f7691ef?w=200",
-    noCarrinho: false,
-  },
-  {
-    id: 4,
-    nome: "Ovos (Dúzia)",
-    imagem: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=200",
-    noCarrinho: false,
-  },
-  {
-    id: 5,
-    nome: "Manteiga",
-    imagem: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=200",
-    noCarrinho: false,
-  }
-];
+- Mostra uma lista de produtos.
+- Exibe nome e imagem de cada item.
+- Permite marcar/desmarcar itens no carrinho.
+- Atualiza a quantidade de itens adicionados ao carrinho em tempo real.
 
+## Tecnologias usadas
+
+- React Native
+- Expo
+- TypeScript
+- Expo Vector Icons
+
+## Como rodar o projeto na web
+
+Execute os comandos abaixo na raiz do projeto:
+
+```bash
+npm ci
+npx expo install react-dom react-native-web
+npx expo start --web
 ```
 
-**Requisitos da Implementação**
+## Observacoes
 
-**1. Componentização e Tipagem (`Produto.tsx`)**
-
-* Crie um arquivo para abrigar o componente `Produto`.
-* Defina e exporte uma interface TypeScript que descreva rigorosamente a estrutura dos objetos contidos no array `produtosIniciais`.
-* O componente deve receber, via *props*, exatamente duas propriedades: um único objeto contendo os dados do produto e uma função de *callback* que será acionada no evento de clique.
-
-**2. Interface do Item (UI)**
-
-* O componente `Produto` deve renderizar a imagem e o nome do item.
-* Inclua um ícone interativo da biblioteca `@expo/vector-icons/Ionicons`. O ícone deve exibir `cart-outline` quando a propriedade `noCarrinho` for `false` e `cart` quando for `true`.
-
-**3. Renderização Principal e Estado (`App.tsx`)**
-
-* Utilize o *hook* `useState` para gerenciar a lista de produtos.
-* Renderize o inventário completo na tela utilizando exclusivamente o componente `FlatList`. O `renderItem` deve instanciar o componente `Produto` desenvolvido na etapa 1.
-
-**4. Manipulação de Estado e Imutabilidade**
-
-* Ao acionar o ícone do carrinho no componente filho, a função de *callback* deve ser disparada passando o `id` do produto.
-* O componente pai deve interceptar este evento e atualizar o estado da lista, invertendo o valor lógico da propriedade `noCarrinho` do item correspondente.
-
-**5. Painel de Resumo Condicional**
-
-* Adicione ao topo da tela (fora da `FlatList`) um painel de texto estático com o prefixo: "Itens no Carrinho: ".
-* Concatene a este texto os nomes apenas dos produtos cujo status `noCarrinho` seja `true`. Os nomes devem ser formatados como uma string contínua, separados por vírgula e espaço (exemplo: "Café em Grãos, Manteiga"). Utilize os métodos `.filter()` e `.map()` ou `.reduce()` para processar o estado antes da renderização.
+- O comando `npm ci` instala as dependencias de forma limpa e reproduzivel a partir do `package-lock.json`.
+- O comando `npx expo install react-dom react-native-web` garante os pacotes corretos para execucao no navegador.
+- O comando `npx expo start --web` inicia o servidor de desenvolvimento e abre a aplicacao na web.
